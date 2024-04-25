@@ -4,7 +4,7 @@ const blogController = require('../Controllers/blogController')
 const jwtMiddleWare = require('../Middleware/jwtMiddleware')
 const multerconfig = require('../Middleware/multerMiddleware')
 
-const adminMiddleWare = require('../Middleware/jwtMiddleware')
+// const adminMiddleWare = require('../Middleware/adminMiddleware')
 
 const router = express.Router() //router instance from express
 

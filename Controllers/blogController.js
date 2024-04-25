@@ -20,7 +20,7 @@ exports.createPostController=async(req,res)=>{
 
 exports.editPostController=async(req,res)=>{
     const {posttitle,posttext}=req.body
-    const image = req.file.filename
+    const image = req.file ? req.file.filename : req.body.updatedimage
     
     const userId = req.payload
     const blogId = req.params.id
@@ -113,12 +113,14 @@ exports.getUserBasedBlogs = async(req,res)=>{
 
 exports.addComment = async(req,res)=>{
     try{
-        const {comment,username}=req.body
+        const {comment,username,date}=req.body
         // const userId = req.payload
         const blogId = req.params.id
         const result = await blogs.updateOne(
-            {_id:blogId},{$push : {comments:{comment,username}}}
+            {_id:blogId},{$push : {comments:{comment,username,date}}}
         )
+        res.status(200).json(result)
+        console.log(result)
 
     }catch(err){
         res.status(401).json(err)

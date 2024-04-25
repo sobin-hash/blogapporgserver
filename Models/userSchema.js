@@ -19,6 +19,13 @@ const userSchema = new mongoose.Schema({
         required:true
 
     },
+    fullname:{
+        type:String
+    },
+    profileImage:{
+        type:String
+
+    }
     
 
 })
