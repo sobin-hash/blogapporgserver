@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     fullname:{
         type:String
     },
-    profileImage:{
+    image:{
         type:String
 
     }

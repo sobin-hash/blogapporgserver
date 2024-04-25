@@ -18,12 +18,15 @@ router.post('/postblog',jwtMiddleWare,multerconfig.single('image'),blogControlle
 
 
 router.post('/editblog/:id',jwtMiddleWare,multerconfig.single('image'),blogController.editPostController)
+router.put('/editprofile',jwtMiddleWare,multerconfig.single('image'),userController.userProfileController)
 router.post('/addcomment/:id',jwtMiddleWare,blogController.addComment)
 router.get('/getallblogs',jwtMiddleWare,blogController.getAllBlogsController)
 router.get('/getspecificblog/:id',jwtMiddleWare,blogController.getSpecificBlogHome)
 router.get('/getuserblogs',jwtMiddleWare,blogController.getUserBasedBlogs)
 router.delete('/removeblog/:id',jwtMiddleWare,blogController.deleteBlogController)
 router.delete('/removeallblog/:id',jwtMiddleWare,blogController.deleteAllBlogsController)
+
+router.get('/getuserprofile',jwtMiddleWare,userController.getUserProfile)
 
 
 

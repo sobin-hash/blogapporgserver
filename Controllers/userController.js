@@ -27,6 +27,21 @@ exports.userRegisterController = async (req, res) => {
 
 }
 
+exports.userProfileController = async (req, res) => {
+    try {
+        const { username, email, password ,fullname,userId} = req.body
+        const image  = req.file?req.file.filename:req.body.imagethumb
+        const result = await users.findOneAndUpdate({ _id:userId },{username, email, password ,fullname,image}) //email:emailvalue,password:passwordvalue
+        res.status(200).json(result) 
+        
+    } catch (err) {
+        res.status(401).json(err)
+
+    }
+
+
+}
+
 
 
 exports.userLoginController = async (req,res) => {
@@ -68,6 +83,20 @@ exports.getAllUser = async(req,res)=>{
         const userslist = await users.find() 
         
         res.status(200).json(userslist)
+        
+    } catch (err) {
+        res.status(401).json(err)
+
+    }
+
+}
+
+exports.getUserProfile = async(req,res)=>{
+    try {
+        const userId = req.payload
+        const user = await users.findOne({_id:userId}) 
+        
+        res.status(200).json(user)
         
     } catch (err) {
         res.status(401).json(err)
